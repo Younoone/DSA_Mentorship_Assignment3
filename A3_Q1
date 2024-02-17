@@ -1,0 +1,26 @@
+public class PeakElement {
+    public static void main(String[] args) 
+    {
+        int arr[] = { 3,2,1, };
+        int n = arr.length;
+        int result = findPeak(arr, 0, n-1, n);
+        System.out.println("Index of the peak element is "+result);
+    }
+
+    public static int findPeak(int[] arr,int start,int end, int n) {
+        int mid = start+(end - start) / 2;
+        if ((mid==n-1 || arr[mid] >= arr[mid + 1]) && (mid==0 || arr[mid] >= arr[mid - 1])) 
+        {
+            return mid;
+        }
+        else if(mid<n-1 && arr[mid]<=arr[mid+1])
+        {
+            return findPeak(arr, mid+1, n-1,n);
+        }
+        else
+        {
+            return findPeak(arr, 0, mid-1,n);
+        }
+    }
+    
+}
